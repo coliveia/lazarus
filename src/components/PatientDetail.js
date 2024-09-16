@@ -1,10 +1,10 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Container, Paper, Typography, Card, CardContent, Tabs, Tab, Divider, Button } from '@mui/material';
-import { format, addDays, isToday, isBefore, differenceInDays } from 'date-fns';
+import { format, addDays, isBefore, differenceInDays } from 'date-fns';
 
 const PatientDetail = () => {
-  const { patientId } = useParams();
+  
   const navigate = useNavigate();
   const [tabIndex, setTabIndex] = React.useState(0);
 
