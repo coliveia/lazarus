@@ -13,7 +13,7 @@ const Dashboard = () => {
     datasets: [
       {
         label: 'Número de Pacientes',
-        data: [15, 30, 20],
+        data: [15, 40, 20],
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
