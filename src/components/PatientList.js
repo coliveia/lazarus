@@ -36,7 +36,7 @@ const PatientList = () => {
       <Grid container spacing={4}>
         {patients.map((patient) => (
           <Grid item xs={12} sm={6} md={4} key={patient.id}>
-            <Card sx={{ backgroundColor: '#fce4ec' }}>
+            <Card sx={{ backgroundColor: '#E3F2FD' }}> {/* Azul bebê */}
               <CardContent>
                 <Typography variant="h6" component="div">
                   {patient.name}
@@ -56,7 +56,7 @@ const PatientList = () => {
               </CardContent>
             </Card>
           </Grid>
-        ))}
+        ))} 
       </Grid>
     </Container>
   );

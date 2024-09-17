@@ -14,8 +14,8 @@ const PatientDetail = () => {
     cpf: '123.456.789-00',
     dob: '01/01/1980',
     diagnosis: 'Diagnóstico Exemplo',
-    admissionDate: new Date(2024, 8, 8), // Exemplo: 15 de setembro de 2024
-    averageHospitalizationDays: 2, // Tempo médio de internação em dias
+    admissionDate: new Date(2024, 9, 8), // Exemplo: 15 de setembro de 2024
+    averageHospitalizationDays: 10, // Tempo médio de internação em dias
     insurancePlan: 'Plano de Saúde Exemplo',
     hospitalizationTime: '2 dias',
     suggestedMedications: 'Medicamento A, Medicamento B',

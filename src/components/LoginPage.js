@@ -7,7 +7,7 @@ const LoginPage = () => {
 
   const handleLogin = () => {
     // Lógica para autenticação e redirecionamento
-    navigate('/hospitals');
+    navigate('/home');
   };
 
   return (
