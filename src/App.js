@@ -9,6 +9,7 @@ import PatientDetail from './components/PatientDetail';
 import AddPatientForm from './components/AddPatientForm';
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
+import NotificationPage from './components/NotificationPage';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path="/add-patient" element={<AddPatientForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/notifications" element={<NotificationPage />} />
+
       </Routes>
       <Footer />
     </>
