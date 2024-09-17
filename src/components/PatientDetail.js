@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Container, Paper, Typography, Card, CardContent, Tabs, Tab, Divider, Button } from '@mui/material';
-import { format, addDays, isBefore, differenceInDays } from 'date-fns';
+import { format, addDays, isBefore} from 'date-fns';
 
 const PatientDetail = () => {
   
@@ -14,7 +14,7 @@ const PatientDetail = () => {
     cpf: '123.456.789-00',
     dob: '01/01/1980',
     diagnosis: 'Diagnóstico Exemplo',
-    admissionDate: new Date(2024, 9, 8), // Exemplo: 15 de setembro de 2024
+    admissionDate: new Date(2024, 9, 8), // Exemplo: 8 de outubro de 2024
     averageHospitalizationDays: 10, // Tempo médio de internação em dias
     insurancePlan: 'Plano de Saúde Exemplo',
     hospitalizationTime: '2 dias',
@@ -30,10 +30,9 @@ const PatientDetail = () => {
 
   const getCardColor = () => {
     if (isBefore(today, dischargeDate)) {
-      const daysRemaining = differenceInDays(dischargeDate, today);
-      return daysRemaining === 1 ? '#fff9c4' : '#fce4ec'; // Amarelo se faltar um dia, rosa caso contrário
+      return '#C8E6C9'; // Verde claro para dentro do prazo
     }
-    return '#ffcdd2'; // Vermelho se a previsão de alta já passou
+    return '#FFF59D'; // Amarelo para vencido
   };
 
   const handleChange = (event, newValue) => {
@@ -63,29 +62,54 @@ const PatientDetail = () => {
       </Card>
 
       <Box>
-        <Tabs value={tabIndex} onChange={handleChange} aria-label="Paciente Details Tabs">
+        <Tabs value={tabIndex} onChange={handleChange} aria-label="Paciente Details Tabs" sx={{ mb: 2 }}>
           <Tab label="Plano de Saúde" />
           <Tab label="Tempo de Internação" />
           <Tab label="Medicamentos Sugeridos" />
           <Tab label="Conta Hospitalar" />
           <Tab label="Coberturas" />
         </Tabs>
-        <Divider />
-        <Box sx={{ p: 3 }}>
+        <Divider sx={{ mb: 2 }} />
+        <Box>
           {tabIndex === 0 && (
-            <Typography variant="body1">{patient.insurancePlan}</Typography>
+            <Card sx={{ mb: 2, padding: 2 }}>
+              <CardContent>
+                <Typography variant="h6">Plano de Saúde</Typography>
+                <Typography variant="body1">{patient.insurancePlan}</Typography>
+              </CardContent>
+            </Card>
           )}
           {tabIndex === 1 && (
-            <Typography variant="body1">{patient.hospitalizationTime}</Typography>
+            <Card sx={{ mb: 2, padding: 2 }}>
+              <CardContent>
+                <Typography variant="h6">Tempo de Internação</Typography>
+                <Typography variant="body1">{patient.hospitalizationTime}</Typography>
+              </CardContent>
+            </Card>
           )}
           {tabIndex === 2 && (
-            <Typography variant="body1">{patient.suggestedMedications}</Typography>
+            <Card sx={{ mb: 2, padding: 2 }}>
+              <CardContent>
+                <Typography variant="h6">Medicamentos Sugeridos</Typography>
+                <Typography variant="body1">{patient.suggestedMedications}</Typography>
+              </CardContent>
+            </Card>
           )}
           {tabIndex === 3 && (
-            <Typography variant="body1">{patient.hospitalAccount}</Typography>
+            <Card sx={{ mb: 2, padding: 2 }}>
+              <CardContent>
+                <Typography variant="h6">Conta Hospitalar</Typography>
+                <Typography variant="body1">{patient.hospitalAccount}</Typography>
+              </CardContent>
+            </Card>
           )}
           {tabIndex === 4 && (
-            <Typography variant="body1">{patient.coverages}</Typography>
+            <Card sx={{ mb: 2, padding: 2 }}>
+              <CardContent>
+                <Typography variant="h6">Coberturas</Typography>
+                <Typography variant="body1">{patient.coverages}</Typography>
+              </CardContent>
+            </Card>
           )}
         </Box>
       </Box>
