@@ -10,6 +10,7 @@ import AddPatientForm from './components/AddPatientForm';
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
 import NotificationPage from './components/NotificationPage';
+import UserPreferences from './components/UserPreferences';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/home" element={<Home />} />
         <Route path="/notifications" element={<NotificationPage />} />
+        <Route path="/preferences" element={<UserPreferences />} />
 
       </Routes>
       <Footer />
