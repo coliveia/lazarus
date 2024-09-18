@@ -1,12 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Container, Paper, Typography, Card, CardContent, Tabs, Tab, Divider, Button } from '@mui/material';
-import { format, addDays, isBefore} from 'date-fns';
+import {  Container, Paper, Typography, Card, CardContent, Button, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { format, addDays, isBefore } from 'date-fns';
 
 const PatientDetail = () => {
-  
   const navigate = useNavigate();
-  const [tabIndex, setTabIndex] = React.useState(0);
 
   // Dados do paciente (exemplo)
   const patient = {
@@ -35,10 +34,6 @@ const PatientDetail = () => {
     return '#FFF59D'; // Amarelo para vencido
   };
 
-  const handleChange = (event, newValue) => {
-    setTabIndex(newValue);
-  };
-
   const handleGoBack = () => {
     navigate(-1); // Volta para a página anterior
   };
@@ -49,6 +44,7 @@ const PatientDetail = () => {
         Voltar
       </Button>
       <Typography variant="h4" gutterBottom>Detalhes do Paciente</Typography>
+      
       <Card sx={{ backgroundColor: getCardColor(), mb: 4 }}>
         <CardContent>
           <Typography variant="h6">Informações Básicas</Typography>
@@ -61,58 +57,51 @@ const PatientDetail = () => {
         </CardContent>
       </Card>
 
-      <Box>
-        <Tabs value={tabIndex} onChange={handleChange} aria-label="Paciente Details Tabs" sx={{ mb: 2 }}>
-          <Tab label="Plano de Saúde" />
-          <Tab label="Tempo de Internação" />
-          <Tab label="Medicamentos Sugeridos" />
-          <Tab label="Conta Hospitalar" />
-          <Tab label="Coberturas" />
-        </Tabs>
-        <Divider sx={{ mb: 2 }} />
-        <Box>
-          {tabIndex === 0 && (
-            <Card sx={{ mb: 2, padding: 2 }}>
-              <CardContent>
-                <Typography variant="h6">Plano de Saúde</Typography>
-                <Typography variant="body1">{patient.insurancePlan}</Typography>
-              </CardContent>
-            </Card>
-          )}
-          {tabIndex === 1 && (
-            <Card sx={{ mb: 2, padding: 2 }}>
-              <CardContent>
-                <Typography variant="h6">Tempo de Internação</Typography>
-                <Typography variant="body1">{patient.hospitalizationTime}</Typography>
-              </CardContent>
-            </Card>
-          )}
-          {tabIndex === 2 && (
-            <Card sx={{ mb: 2, padding: 2 }}>
-              <CardContent>
-                <Typography variant="h6">Medicamentos Sugeridos</Typography>
-                <Typography variant="body1">{patient.suggestedMedications}</Typography>
-              </CardContent>
-            </Card>
-          )}
-          {tabIndex === 3 && (
-            <Card sx={{ mb: 2, padding: 2 }}>
-              <CardContent>
-                <Typography variant="h6">Conta Hospitalar</Typography>
-                <Typography variant="body1">{patient.hospitalAccount}</Typography>
-              </CardContent>
-            </Card>
-          )}
-          {tabIndex === 4 && (
-            <Card sx={{ mb: 2, padding: 2 }}>
-              <CardContent>
-                <Typography variant="h6">Coberturas</Typography>
-                <Typography variant="body1">{patient.coverages}</Typography>
-              </CardContent>
-            </Card>
-          )}
-        </Box>
-      </Box>
+      {/* Aqui os cards expansíveis (Accordion) */}
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Plano de Saúde</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography variant="body1">{patient.insurancePlan}</Typography>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Tempo de Internação</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography variant="body1">{patient.hospitalizationTime}</Typography>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Medicamentos Sugeridos</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography variant="body1">{patient.suggestedMedications}</Typography>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Conta Hospitalar</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography variant="body1">{patient.hospitalAccount}</Typography>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Coberturas</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography variant="body1">{patient.coverages}</Typography>
+        </AccordionDetails>
+      </Accordion>
     </Container>
   );
 };
