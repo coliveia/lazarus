@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, TextField, Container, Typography, Paper, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import ScienceIcon from '@mui/icons-material/Science'; // Ícone de laboratório
 
-const LoginPage = () => {
+const LoginPage = ({ setIsAuthenticated }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    // Lógica para autenticação e redirecionamento
-    navigate('/home');
+    // Simulação de lógica para autenticação
+    if (username === 'admin' && password === 'admin') {
+      setIsAuthenticated(true); // Define o usuário como autenticado
+      navigate('/home'); // Redireciona para a página inicial
+    } else {
+      alert('Credenciais inválidas!');
+    }
   };
 
   return (
@@ -50,6 +57,8 @@ const LoginPage = () => {
           margin="normal"
           required
           variant="outlined"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <TextField
           label="Password"
@@ -58,6 +67,8 @@ const LoginPage = () => {
           margin="normal"
           required
           variant="outlined"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <Button type="submit" variant="contained" color="primary" fullWidth>
           Login

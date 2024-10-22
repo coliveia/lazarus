@@ -1,23 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Box } from '@mui/material';
-import { FaHome, FaEnvelope, FaUser } from 'react-icons/fa'; // Adicionando o ícone de usuário
+import { AppBar, Toolbar, IconButton, Box, Typography, TextField } from '@mui/material';
+import { FaEnvelope, FaUser } from 'react-icons/fa'; // Adicionando o ícone de usuário
+import SearchIcon from '@mui/icons-material/Search'; // Ícone de busca
 
 const Header = () => {
   return (
-    <AppBar position="static" sx={{ mb: 4 }}>
-      <Toolbar sx={{ justifyContent: 'space-between' }}>
-        {/* Ícone de Home na esquerda */}
-        <IconButton
-          component={Link}
-          to="/home"
-          edge="start"
-          color="inherit"
-          aria-label="home"
-          sx={{ marginRight: 2 }}
-        >
-          <FaHome size={24} style={{ color: '#fff' }} />
-        </IconButton>
+    <AppBar position="static" sx={{ mb: 4, backgroundColor: '#0a0a0a' }}>
+      <Toolbar sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+        {/* Logotipo HealthChain */}
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography variant="h6" sx={{ color: '#fff', marginLeft: 1 }}>
+            Lazarus
+          </Typography>
+        </Box>
+
+        {/* Barra de Pesquisa */}
+        <Box sx={{ flexGrow: 1, mx: 2, maxWidth: '300px' }}> {/* Limitar o comprimento */}
+          <TextField
+            variant="outlined"
+            placeholder="Pesquisar..."
+            fullWidth
+            InputProps={{
+              endAdornment: (
+                <IconButton type="submit" sx={{ padding: 0 }}>
+                  <SearchIcon sx={{ color: '#1976d2' }} />
+                </IconButton>
+              ),
+            }}
+            sx={{
+              backgroundColor: '#fff',
+              borderRadius: 1,
+              height: '36px', // Altura ajustada para ser metade da altura do header
+              '& .MuiOutlinedInput-root': {
+                height: '100%', // Faz com que o campo de texto ocupe toda a altura
+              },
+            }}
+          />
+        </Box>
 
         {/* Ícones de Notificação e Usuário na direita */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
