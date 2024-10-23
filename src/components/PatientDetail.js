@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import {  Container, Paper, Typography, Card, CardContent, Button, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Container, Paper, Typography, Card, CardContent, Button, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { format, addDays, isBefore } from 'date-fns';
 
@@ -100,6 +100,22 @@ const PatientDetail = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography variant="body1">{patient.coverages}</Typography>
+        </AccordionDetails>
+      </Accordion>
+
+      {/* Novo Accordion para o Guia Hospitalar com o PDF */}
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Guia Hospitalar</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          {/* Exibir o PDF diretamente na tela usando iframe */}
+          <iframe
+            src="/pdftiss-sadt.pdf" // Caminho do arquivo PDF (mudar conforme necessário)
+            width="100%"
+            height="600px"
+            title="Guia Hospitalar"
+          />
         </AccordionDetails>
       </Accordion>
     </Container>
