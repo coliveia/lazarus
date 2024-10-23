@@ -15,9 +15,9 @@ const appointments = [
 ];
 
 const legend = [
-  { status: '0 - 3 Dias', color: 'green' },
+  { status: '0 - 3 Dias', color: 'red' },
   { status: '4 - 5 Dias', color: 'yellow' },
-  { status: 'Mais que 5 Dias', color: 'red' }
+  { status: 'Mais que 5 Dias', color: 'green' }
 ];
 
 const Agenda = () => {
