@@ -14,6 +14,7 @@ import NotificationPage from './components/NotificationPage';
 import UserPreferences from './components/UserPreferences';
 import Agenda from './components/Agenda'; // Importando o componente de Agenda
 import ChatAI from './components/ChatAI'; // Importando o componente do Chat AI
+import BillAnalysis from './components/BillAnalysis'; // Importando o componente da Análise de Contas Médicas
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Controle de autenticação
@@ -37,6 +38,7 @@ function App() {
               <Route path="/preferences" element={<UserPreferences />} />
               <Route path="/chat-ai" element={<ChatAI />} /> {/* Rota da tela de Chat AI */}
               <Route path="/agenda" element={<Agenda />} /> {/* Rota da tela de Agenda */}
+              <Route path="/bill-analysis" element={<BillAnalysis />} /> {/* Rota da tela de Análise de Contas Médicas */}
             </Routes>
             <Footer />
           </div>

@@ -8,6 +8,7 @@ import EventIcon from '@mui/icons-material/Event';
 import LogoutIcon from '@mui/icons-material/Logout';
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'; // Ícone para HealthChain
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital'; // Ícone para Hospitais
+import AssignmentIcon from '@mui/icons-material/Assignment'; // Ícone para Análise de Contas Médicas
 
 const Sidebar = () => {
   return (
@@ -84,6 +85,18 @@ const Sidebar = () => {
         >
           <ListItemIcon sx={{ justifyContent: 'center' }}>
             <EventIcon style={{ color: '#fff', fontSize: 30 }} />
+          </ListItemIcon>
+        </ListItem>
+
+        {/* Link para Análise de Contas Médicas */}
+        <ListItem
+          button
+          component={Link}
+          to="/bill-analysis"
+          sx={{ justifyContent: 'center', textAlign: 'center', padding: 0, marginBottom: 3 }} // Aumentando marginBottom
+        >
+          <ListItemIcon sx={{ justifyContent: 'center' }}>
+            <AssignmentIcon style={{ color: '#fff', fontSize: 30 }} />
           </ListItemIcon>
         </ListItem>
       </List>
